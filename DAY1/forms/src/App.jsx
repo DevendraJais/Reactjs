@@ -1,34 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react'
+import Child from '../../forms/src/Child';
 
 function App() {
-  const [count, setCount] = useState(0)
 
+  const[name,setName] = useState("");
+  const[pswd,setpswd] = useState("");
+  const[email,setEmail] = useState("");
+
+
+  // function handleChange(e){
+
+  //   console.log(e.target.value);
+  //   let capName = e.target.value.toUpperCase();
+  //   setName(e.target.value)
+  //   setName(capName)
+  // }
+
+  // function handlePassword(e){
+  //   console.log(e.target.value);
+  //   setpswd(e.target.value)
+  // }
+  function handleChange(e){
+    if(e.target.name == 'firstname'){
+      const capName = (e.target.value).toUpperCase();
+      setName(capName)
+    }
+    else if(e.target.email){
+      const email = (e.target.value)
+      setEmail(email)
+
+    }
+    else{
+      setpswd(e.target.value)
+    }
+  }
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+       <form action="" onSubmit={}>
+        <label htmlFor="">FName</label>
+        <input type="text" value={name} name='firstname'onChange={handleChange}/><br/>
+
+        <lable htmlFor="">Email</lable>
+        <input type="email" value={email} name='email' onChange={handleChange}/><br/>
+
+        <label htmlFor=''>Password :</label>
+        <input type='password' value={pswd} name='password' onChange={handleChange}/>
+       </form>
+       <Child name={name}/>
+    </div>
   )
 }
 
